@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{{object}}</h1>
+    <hr>
+        <ol>
+            {% for attempt in object.quizattempt_set.all %}
+              <li><a href="{{attempt.get_absolute__url}}"><strong>Score: </strong>{{attempt.score}}, {{attempt.start_time}}, {{attempt.end_time}}</a></li>
+              <a href=""></a>
+              <hr>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock content %}

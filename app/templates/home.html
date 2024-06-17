@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="border-bottom">Welcome to the Quiz</h1>
+<br>
+<form method="post">
+    {% csrf_token %}
+    <label for="name">Your Name:</label>
+    <div class="col-lg-4 mc-auto">
+    <input type="text"
+    class="form-control"
+        id="name"
+        name="name"
+        required>
+        <br>
+    <button class="btn btn-success" type="submit">Start Quiz</button>
+</div>
+</form>
+{% endblock content %}

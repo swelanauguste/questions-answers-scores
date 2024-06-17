@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="border-bottom">Quiz Result for {{ attempt.participant.name }}
+    </h1>
+    <br>
+    <p>Your score: {{ attempt.score }} / 10</p>
+    <ol>
+        {% for answer in answers %}
+        <li>
+            <p>{{ answer.question.text }}</p>
+            <p>Your answer:
+                {% if answer.choice %}
+                {{ answer.choice.text }} -
+                {% endif %}
+                {% if answer.is_correct %}
+                Correct
+                {% else %}
+                Wrong <br>
+                Correct answer:
+                {% for choice in answer.question.choices.all %}
+                {% if choice.is_correct %}
+                {{ choice.text }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </p>
+        </li>
+        <hr>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock content %}
